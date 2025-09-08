@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy Bites</title>
+  <link rel="stylesheet" href="healthy-food1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">🥗 Healthy Bites</a>
+
+      <nav class="nav">
+        <a href="#catalog" class="nav-link">Home</a>
+        <a href="#wishlist" class="nav-link" id="nav-wishlist">Wishlist <span class="badge" id="wishlist-count">0</span></a>
+        <a href="#cart" class="nav-link" id="nav-cart">Cart <span class="badge" id="cart-count">0</span></a>
+        <button class="btn btn-outline" id="loginBtn">Login</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Search & Filters -->
+    <section class="filters" id="filters">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search healthy foods (e.g., oats, salmon, apple)" />
+      </div>
+      <div class="filter-row">
+        <div class="filter">
+          <label for="categorySelect">Category</label>
+          <select id="categorySelect">
+            <option value="all">All</option>
+            <option value="fruit">Fruit</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="protein">Protein</option>
+            <option value="grain">Whole Grain</option>
+            <option value="dairy">Dairy/Alt</option>
+            <option value="nuts">Nuts & Seeds</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label>Calories (per serving)</label>
+          <div class="range-pair">
+            <input type="number" id="calMin" placeholder="min" min="0" />
+            <span>–</span>
+            <input type="number" id="calMax" placeholder="max" min="0" />
+          </div>
+        </div>
+        <div class="filter">
+          <label>Protein ≥ (g)</label>
+          <input type="number" id="proteinMin" placeholder="0" min="0" />
+        </div>
+        <div class="filter">
+          <label>&nbsp;</label>
+          <button class="btn" id="clearFilters">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog -->
+    <section id="catalog">
+      <h2 class="section-title">Healthy Catalog</h2>
+      <div id="grid" class="grid">
+        <img src="./banana.jpg" alt="banana">
+      </div>
+    </section>
+
+    <!-- Wishlist -->
+    <section id="wishlist" class="panel">
+      <div class="panel-head">
+        <h2 class="section-title">Your Wishlist</h2>
+        <button class="btn btn-outline" id="clearWishlist">Clear Wishlist</button>
+      </div>
+      <div id="wishlistGrid" class="grid"></div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart" class="panel">
+      <div class="panel-head">
+        <h2 class="section-title">Your Cart</h2>
+        <button class="btn btn-outline" id="clearCart">Clear Cart</button>
+      </div>
+      <div id="cartList" class="cart-list"></div>
+      <div class="cart-summary">
+        <div>
+          <p><strong>Items:</strong> <span id="cartItemsCount">0</span></p>
+          <p><strong>Total Calories:</strong> <span id="cartCalories">0</span> kcal</p>
+          <p><strong>Estimated Protein:</strong> <span id="cartProtein">0</span> g</p>
+          <p>Total Carbs: <span id="cartCarbs">0</span> g</p>
+           <p>Total Fat: <span id="cartFat">0</span> g</p>
+      <p>Total Price: <span id="cartPrice">₹0.00</span></p> 
+        </div>
+        <button class="btn" id="checkoutBtn">Make Order</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" data-close>×</button>
+      <h3>Login</h3>
+      <p class="muted">This is a demo login with local storage only.</p>
+      <form id="loginForm" class="form">
+        <label> Email
+          <input type="email" id="loginEmail" placeholder="you@example.com" required />
+        </label>
+        <label> Password
+          <input type="password" id="loginPassword" placeholder="••••••••" required minlength="6" />
+        </label>
+        <button type="submit" class="btn w-full">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" data-close>×</button>
+      <h3>Checkout</h3>
+      <p class="muted">No payment processed. This confirms a demo order.</p>
+      <form id="checkoutForm" class="form">
+        <div class="form-grid">
+          <label> Full Name
+            <input type="text" id="fullName" placeholder="John Doe" required />
+          </label>
+          <label> Phone
+            <input type="tel" id="phone" placeholder="+91 90000 00000" required />
+          </label>
+        </div>
+        <label> Address
+          <input type="text" id="address" placeholder="Street, City, Country" required />
+        </label>
+        <div class="form-grid">
+          <label> City
+            <input type="text" id="city" required />
+          </label>
+          <label> Postal Code
+            <input type="text" id="postal" required />
+          </label>
+        </div>
+        <button type="submit" class="btn w-full">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Healthy Bites • Eat well, live well.</p>
+    </div>
+  </footer>
+
+  <script src="healty1.js"></script>
+</body>
+</html>
